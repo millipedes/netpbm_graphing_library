@@ -20,6 +20,8 @@ int main(void) {
 	write_axes(graph);
 	// Draw border on graph
 	write_border(graph);
+	// Draw tic marks
+	write_tic_marks(graph);
 	// Write graph to file
 	print_graph_to_file(fp, graph);
 	// Free graph

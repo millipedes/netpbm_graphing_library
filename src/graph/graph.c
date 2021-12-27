@@ -45,7 +45,7 @@ graph_t * init_graph(int height, int width) {
 void write_axes(graph_t * graph) {
 	for(int i = 0; i < graph->height; i++) {
 		for(int j = 0; j < graph->width; j++) {
-			if ((j > ((graph->width/2) - (RULE_W/2)) && j < ((graph->width/2) + (RULE_W/2))) || ((i > graph->height/2 - RULE_W/2) && (i < graph->height/2  + RULE_W/2))) {
+			if ((j > ((graph->width/2 - BORDER) - (RULE_W)) && j < ((graph->width/2 - BORDER) + (RULE_W))) || ((i > graph->height/2 - BORDER - RULE_W) && (i < graph->height/2 - BORDER + RULE_W))) {
 				graph->pixels[i][j].r = 0;
 				graph->pixels[i][j].g = 0;
 				graph->pixels[i][j].b = 0;
@@ -72,23 +72,26 @@ void write_border(graph_t * graph) {
 }
 
 void write_tic_marks(graph_t * graph) {
-	if(GRAPH_W % TICS_X != 0 || GRAPH_H % TICS_Y != 0) {
+	if((GRAPH_W - 2*BORDER) % TICS_X != 0 || (GRAPH_H - 2*BORDER) % TICS_Y != 0) {
 		fprintf(stderr, "[ERROR]: graph width||height not divisible by tics_x||tic_y\n");
 	}
-	int inc_x = GRAPH_W / TICS_X;
-	int tmp_x = GRAPH_W / TICS_X;
-	int inc_y = GRAPH_H / TICS_Y;
-	int tmp_y = GRAPH_H / TICS_Y;
+	int inc_x = (GRAPH_W - 2*BORDER) / TICS_X;
+	int tmp_x = (GRAPH_W - 2*BORDER) / TICS_X;
+	int inc_y = (GRAPH_H - 2*BORDER) / TICS_Y;
+	int tmp_y = (GRAPH_H - 2*BORDER) / TICS_Y;
 
-	for(int i = 0; i < graph->height; i++) {
-		for(int j = 0; j < graph->width; j++) {
-			if (j > tmp_x - RULE_W && j < tmp_x + RULE_W && (i > graph->height/2 - TIC_MAG && i < graph->height/2 + TIC_MAG)) {
-				tmp_x += inc_x;
+	for(int i = BORDER; i < (graph->height - BORDER); i++) {
+		for(int j = BORDER; j < (graph->width - BORDER); j++) {
+			if (j > (tmp_x - RULE_W) && j < (tmp_x + RULE_W) && i > (graph->height/2 - BORDER - TIC_MAG) && i < (graph->height/2 - BORDER + TIC_MAG)) {
 				graph->pixels[i][j].r = 0;
 				graph->pixels[i][j].g = 0;
 				graph->pixels[i][j].b = 0;
 			}
+			if(j > tmp_x + RULE_W) {
+				tmp_x += inc_x;
+			}
 		}
+		tmp_x = inc_x;
 	}
 }
 

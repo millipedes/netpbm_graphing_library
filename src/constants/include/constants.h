@@ -5,8 +5,8 @@
 #define MAX_VALUE 255 	// The max color value for each pixel
 #define GRAPH_H 1500 	// The width of the graph in pixels
 #define GRAPH_W 1500 	// The height of the graph in pixels
-#define RULE_W 5		// The width of the axes and tic marks
-#define BORDER 8		// The width of the border around the graph
+#define RULE_W 2		// The width of the axes and tic marks
+#define BORDER 10		// The width of the border around the graph
 #define BORDER_R 255	// The Red color of the border
 #define BORDER_G 0		// The Green color of the border
 #define BORDER_B 0		// The blue color of the border
