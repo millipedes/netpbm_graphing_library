@@ -7,6 +7,8 @@ is generally just for quick graphical debugging due to its uncompressed nature,
 however this project is just to test what it would take to write a simple
 graphing program in C.
 
+[Here](https://en.wikipedia.org/wiki/Netpbm) is the wikipedia page for netpbm.
+
 ## Supported Features
 
 ## Installation
