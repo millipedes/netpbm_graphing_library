@@ -16,7 +16,7 @@ int main(void) {
 	print_headings(fp, GRAPH_H, GRAPH_W);
 	graph_t * graph = init_graph(GRAPH_H, GRAPH_W);
 	write_axes(graph);
-	//write_border(graph);
+	write_border(graph);
 	print_graph_to_file(fp, graph);
 	free_graph(graph);
 

@@ -1,3 +1,12 @@
+/**
+ * @file graph.h
+ * @brief This file contains the function definitions of the functions defined
+ * in graph.c
+ * @author Matthew C. Lindeman
+ * @date 12/27/21
+ * @bug None known
+ * @todo Nothing atm
+ */
 #ifndef GRA_H
 #define GRA_H
 
