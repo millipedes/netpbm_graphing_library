@@ -8,7 +8,6 @@
  */
 #include<stdio.h>
 #include<stdlib.h>
-#include<string.h>
 #include"../constants/include/constants.h"
 #include"../graph/include/graph.h"
 

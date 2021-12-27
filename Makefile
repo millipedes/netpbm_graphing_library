@@ -24,9 +24,9 @@ memcheck:
 	valgrind $(EXEFILE) --leak-check=full
 
 git-update:
-	git add files
+	git add src/ Makefile README.md
 	git commit -m "update commit"
-	git push origin main
+	git push origin master
 
 test:
 	xreader test.ppm&
