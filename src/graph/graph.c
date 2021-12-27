@@ -90,8 +90,17 @@ void write_tic_marks(graph_t * graph) {
 			if(j > tmp_x + RULE_W) {
 				tmp_x += inc_x;
 			}
+			if (i > (tmp_y - RULE_W) && i < (tmp_y + RULE_W) && j > (graph->width/2 - BORDER - TIC_MAG) && j < (graph->width/2 - BORDER + TIC_MAG)) {
+				graph->pixels[i][j].r = 0;
+				graph->pixels[i][j].g = 0;
+				graph->pixels[i][j].b = 0;
+			}
+			if(i > tmp_y + RULE_W) {
+				tmp_y += inc_y;
+			}
 		}
 		tmp_x = inc_x;
+		tmp_y = inc_y;
 	}
 }
 
