@@ -1,15 +1,14 @@
 #ifndef CON_H
 #define CON_H
 
-//#define PATH "/home/knd/Documents/random_graph_program/test.ppm"
 #define PATH "./test.ppm"
-#define MAX_VALUE 255 // The max color value for each pixel
-#define GRAPH_H 3 // The width of the 
-#define GRAPH_W 3
-#define RULE_W 10
-#define BORDER 25
-#define BORDER_R 0
-#define BORDER_G 35
-#define BORDER_B 66
+#define MAX_VALUE 255 	// The max color value for each pixel
+#define GRAPH_H 1500 	// The width of the graph in pixels
+#define GRAPH_W 1500 	// The height of the graph in pixels
+#define RULE_W 5		// The width of the axes
+#define BORDER 25		// The width of the border around the graph
+#define BORDER_R 0		// The Red color of the border
+#define BORDER_G 35		// The Green color of the border
+#define BORDER_B 66		// The blue color of the border
 
 #endif

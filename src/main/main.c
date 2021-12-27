@@ -14,9 +14,10 @@
 int main(void) {
 	FILE * fp = fopen(PATH, "w");
 	print_headings(fp, GRAPH_H, GRAPH_W);
-	print_graph(fp, GRAPH_H, GRAPH_W);
 	graph_t * graph = init_graph(GRAPH_H, GRAPH_W);
-	term_print_graph(graph);
+	write_axes(graph);
+	//write_border(graph);
+	print_graph_to_file(fp, graph);
 	free_graph(graph);
 
 	fclose(fp);

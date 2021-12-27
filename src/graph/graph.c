@@ -13,7 +13,7 @@
 #include"../constants/include/constants.h"
 
 /**
- * This function initiates a graph of height and width with black pixels.
+ * This function initiates a graph of height and width with white pixels.
  * @param the height and width of the graph
  * @return the initialized graph
  */
@@ -26,15 +26,49 @@ graph_t * init_graph(int height, int width) {
 
 	for(int i = 0; i < height; i++) {
 		for(int j = 0; j < width; j++) {
-			graph->pixels[i][j].r = 0;
-			graph->pixels[i][j].g = 0;
-			graph->pixels[i][j].b = 0;
+			graph->pixels[i][j].r = 255;
+			graph->pixels[i][j].g = 255;
+			graph->pixels[i][j].b = 255;
 		}
 	}
 
 	graph->width = width;
 	graph->height = height;
 	return graph;
+}
+
+/**
+ * This function writes the axes to a graph
+ * @param the graph for which the axes are to be written
+ * @return N/a
+ */
+void write_axes(graph_t * graph) {
+	for(int i = 0; i < graph->height; i++) {
+		for(int j = 0; j < graph->width; j++) {
+			if ((j > ((graph->width/2) - (RULE_W/2)) && j < ((graph->width/2) + (RULE_W/2))) || ((i > graph->height/2 - RULE_W/2) && (i < graph->height/2  + RULE_W/2))) {
+				graph->pixels[i][j].r = 0;
+				graph->pixels[i][j].g = 0;
+				graph->pixels[i][j].b = 0;
+			}
+		}
+	}
+}
+
+/**
+ * This function writes borders into a given graph_t struct
+ * @param The grpah tp be written to
+ * @return N/a
+ */
+void write_border(graph_t * graph) {
+	for(int i = 0; i < graph->height; i++) {
+		for(int j = 0; j < graph->width; j++) {
+			if((j < BORDER || j > GRAPH_W - BORDER) || (i < BORDER || i > GRAPH_H - BORDER)) {
+				graph->pixels[i][j].r = BORDER_R;
+				graph->pixels[i][j].g = BORDER_G;
+				graph->pixels[i][j].b = BORDER_B;
+			}
+		}
+	}
 }
 
 /**
@@ -76,22 +110,11 @@ void print_headings(FILE * fp, int height, int width) {
 	fprintf(fp, "%d\n", MAX_VALUE);
 }
 
-/**
- * This function
- * @param
- * @return
- */
-void print_graph(FILE * fp, int height, int width) {
-	for(int i = 0; i < height; i++) {
-		for(int j = 0; j < width; j++) {
-			// The vertical line
-			if ((j > ((width/2) - (RULE_W/2)) && j < ((width/2) + (RULE_W/2))) || ((i > height/2 - RULE_W/2) && (i < height/2  + RULE_W/2))) {
-				fprintf(fp, "0 0 0\n");
-			} else if((j < BORDER || j > GRAPH_W - BORDER) || (i < BORDER || i > GRAPH_H - BORDER)) {
-				fprintf(fp, "%d %d %d\n", BORDER_R, BORDER_G, BORDER_B);
-			} else {
-				fprintf(fp, "%d %d %d\n", MAX_VALUE, MAX_VALUE, MAX_VALUE);
-			}
+void print_graph_to_file(FILE * fp, graph_t * graph) {
+	for(int i = 0; i < graph->height; i++) {
+		for(int j = 0; j < graph->width; j++) {
+			fprintf(fp, "%d %d %d\t", graph->pixels[i][j].r, graph->pixels[i][j].g, graph->pixels[i][j].b);
 		}
+		fprintf(fp, "\n");
 	}
 }
