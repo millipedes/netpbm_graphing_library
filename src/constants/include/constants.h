@@ -1,7 +1,8 @@
 #ifndef CON_H
 #define CON_H
 
-#define PATH "/home/knd/Documents/random_graph_program/test.ppm"
+//#define PATH "/home/knd/Documents/random_graph_program/test.ppm"
+#define PATH "./test.ppm"
 #define MAX_VALUE 255 // The max color value for each pixel
 #define GRAPH_H 3 // The width of the 
 #define GRAPH_W 3

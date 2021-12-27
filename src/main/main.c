@@ -1,6 +1,6 @@
 /**
  * @file main.c
- * @brief
+ * @brief this file initiates the program
  * @author Matthew C. Lindeman
  * @date 12/27/21
  * @bug None known
