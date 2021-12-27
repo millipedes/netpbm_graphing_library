@@ -10,5 +10,7 @@
 #define BORDER_R 0		// The Red color of the border
 #define BORDER_G 35		// The Green color of the border
 #define BORDER_B 66		// The blue color of the border
+#define TICS_X 10		// The number of ticmarks on the x axis
+#define TICS_Y 10		// The number of ticmarks on the y axis
 
 #endif

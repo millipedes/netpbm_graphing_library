@@ -54,6 +54,14 @@ void write_axes(graph_t * graph) {
 	}
 }
 
+void write_tic_marks(graph_t * graph) {
+	for(int i = 0; i < graph->height; i++) {
+		for(int j = 0; j < graph->width; j++) {
+			// break into even segments, use borderwidth constant
+		}
+	}
+}
+
 /**
  * This function writes borders into a given graph_t struct
  * @param The grpah tp be written to
