@@ -54,14 +54,6 @@ void write_axes(graph_t * graph) {
 	}
 }
 
-void write_tic_marks(graph_t * graph) {
-	for(int i = 0; i < graph->height; i++) {
-		for(int j = 0; j < graph->width; j++) {
-			// break into even segments, use borderwidth constant
-		}
-	}
-}
-
 /**
  * This function writes borders into a given graph_t struct
  * @param The grpah tp be written to
@@ -79,13 +71,34 @@ void write_border(graph_t * graph) {
 	}
 }
 
+void write_tic_marks(graph_t * graph) {
+	if(GRAPH_W % TICS_X != 0 || GRAPH_H % TICS_Y != 0) {
+		fprintf(stderr, "[ERROR]: graph width||height not divisible by tics_x||tic_y\n");
+	}
+	int inc_x = GRAPH_W / TICS_X;
+	int tmp_x = GRAPH_W / TICS_X;
+	int inc_y = GRAPH_H / TICS_Y;
+	int tmp_y = GRAPH_H / TICS_Y;
+
+	for(int i = 0; i < graph->height; i++) {
+		for(int j = 0; j < graph->width; j++) {
+			if (j > tmp_x - RULE_W && j < tmp_x + RULE_W && (i > graph->height/2 - TIC_MAG && i < graph->height/2 + TIC_MAG)) {
+				tmp_x += inc_x;
+				graph->pixels[i][j].r = 0;
+				graph->pixels[i][j].g = 0;
+				graph->pixels[i][j].b = 0;
+			}
+		}
+	}
+}
+
 /**
  * This function prints out the pixels of the graph to the terminal.  Only 
  * recomended for very small graphs.
  * @param The graph
  * @return N/a
  */
-void term_print_graph(graph_t * graph) {
+void print_graph(graph_t * graph) {
 	for (int i = 0; i < graph->height; i++) {
 		for(int j = 0; j < graph->width; j++) {
 			printf("%d %d %d\t", graph->pixels[i][j].r, graph->pixels[i][j].g, graph->pixels[i][j].b);

@@ -25,7 +25,8 @@ typedef struct GRAPH_T {
 graph_t * init_graph(int height, int width);
 void write_axes(graph_t * graph);
 void write_border(graph_t * graph);
-void term_print_graph(graph_t * graph);
+void write_tic_marks(graph_t * graph);
+void print_graph(graph_t * graph);
 void free_graph(graph_t * graph);
 
 void print_headings(FILE * fp, int height, int width);
