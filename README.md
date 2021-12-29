@@ -11,9 +11,13 @@ file sizes. [Here](https://en.wikipedia.org/wiki/Netpbm) is the wikipedia
 page for the netpbm file format, I found it quite helpful.
 
 ## Supported Features
-Currently there is a 
+Currently this program can write a graph with a border according to the
+constants.h file.  Currently I am working on other projects but will likely
+come back to this one day
 
 ## :floppy_disk: Installation
+Installation is not currently supported.
+
 NOTE: This installation will produce a binary in the system under the name 
 `millipedes_grapher`.  This binary will accept flags that are arguments to the
 function `plot` in the source code.  This function can be imported to other C

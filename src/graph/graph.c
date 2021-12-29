@@ -71,6 +71,11 @@ void write_border(graph_t * graph) {
 	}
 }
 
+/**
+ * This function writes the tic marks onto a graph_t struct
+ * @param The graph struct
+ * @return N/a
+ */
 void write_tic_marks(graph_t * graph) {
 	if((GRAPH_W - 2*BORDER) % TICS_X != 0 || (GRAPH_H - 2*BORDER) % TICS_Y != 0) {
 		fprintf(stderr, "[ERROR]: graph width||height not divisible by tics_x||tic_y\n");
@@ -82,19 +87,23 @@ void write_tic_marks(graph_t * graph) {
 
 	for(int i = BORDER; i < (graph->height - BORDER); i++) {
 		for(int j = BORDER; j < (graph->width - BORDER); j++) {
+			// All tic marks on x axis
 			if (j > (tmp_x - RULE_W) && j < (tmp_x + RULE_W) && i > (graph->height/2 - BORDER - TIC_MAG) && i < (graph->height/2 - BORDER + TIC_MAG)) {
 				graph->pixels[i][j].r = 0;
 				graph->pixels[i][j].g = 0;
 				graph->pixels[i][j].b = 0;
 			}
+			// If j is past the current tic mark shift current tic to the right
 			if(j > tmp_x + RULE_W) {
 				tmp_x += inc_x;
 			}
+			// All tic marks on y axis
 			if (i > (tmp_y - RULE_W) && i < (tmp_y + RULE_W) && j > (graph->width/2 - BORDER - TIC_MAG) && j < (graph->width/2 - BORDER + TIC_MAG)) {
 				graph->pixels[i][j].r = 0;
 				graph->pixels[i][j].g = 0;
 				graph->pixels[i][j].b = 0;
 			}
+			// If i is past the current tic mark shift current tic down
 			if(i > tmp_y + RULE_W) {
 				tmp_y += inc_y;
 			}
@@ -102,6 +111,9 @@ void write_tic_marks(graph_t * graph) {
 		tmp_x = inc_x;
 		tmp_y = inc_y;
 	}
+}
+
+void write_function(graph_t * graph, double (*func_p)(double)) {
 }
 
 /**
