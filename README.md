@@ -1,4 +1,7 @@
 # Netpbm C Graphing Library
+
+I re-wrote this library in a much cleaner/more efficient manner [here](https://github.com/millipedes/C-Netpbm-Function-Grapher)
+
 ## :chart_with_upwards_trend: Purpose
 The idea of this project is to make a `plot` function in C that will take the
 user's input (either a functions or collection of points) and generate a graph
